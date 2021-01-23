@@ -2,7 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import * as path from 'path';
-import * as fs from 'fs'
+import * as fs from 'fs';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -25,11 +25,20 @@ export function activate(context: vscode.ExtensionContext) {
 	// context.subscriptions.push(disposable);
 
 	context.subscriptions.push(
-		vscode.commands.registerCommand('vscode-go-by-example.helloWorld', () => {
+		vscode.commands.registerCommand('vscode-go-by-example.helloWorld', async () => {
+
+			const mediaDir = vscode.Uri.file(
+				path.join(context.extensionPath, 'media')
+			);
+			const paths = fs.readdirSync(mediaDir.fsPath);
+			const items = paths.map(p=>path.parse(p).name);
+
+			const item = await vscode.window.showQuickPick(items);
+
 			// Create and show panel
 			const panel = vscode.window.createWebviewPanel(
 				'gobyexample',
-				'Go By Example: test',
+				'Go By Example: ' + item,
 				vscode.ViewColumn.One,
 				{
 					// Only allow the webview to access resources in our extension's media directory
@@ -39,7 +48,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 			// Get path to resource on disk
 			const onDiskPath = vscode.Uri.file(
-				path.join(context.extensionPath, 'media', 'test.html')
+				path.join(context.extensionPath, 'media',  item + '.html')
 			);
 
 			// // And get the special URI to use with the webview
