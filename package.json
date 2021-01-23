@@ -17,7 +17,7 @@
 		"commands": [
 			{
 				"command": "vscode-go-by-example.helloWorld",
-				"title": "Hello World"
+				"title": "GoByExample: Hello World"
 			}
 		]
 	},
