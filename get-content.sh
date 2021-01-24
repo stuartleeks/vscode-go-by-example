@@ -11,3 +11,6 @@ cp tmp/gbe/public/* media/
 rm -rf tmp
 
 cat ./media-overrides/site.css >> ./media/site.css
+
+# Initial exploration into parsing for code-gen
+# topics=$(grep  -oE '<li><a href="[^"]*' ./media/index.html | sed 's/<li><a href="//')

@@ -3,6 +3,7 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs';
+import { QuickPickItem } from 'vscode';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -27,11 +28,18 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(
 		vscode.commands.registerCommand('vscode-go-by-example.helloWorld', async () => {
 
-			const mediaDir = vscode.Uri.file(
-				path.join(context.extensionPath, 'media')
-			);
-			const paths = fs.readdirSync(mediaDir.fsPath);
-			const items = paths.filter(p => p.indexOf('.') < 0);
+			const indexContent = fs.readFileSync(vscode.Uri.file(path.join(context.extensionPath, 'media', 'index.html')).fsPath, 'utf8');
+			const itemRegex = new RegExp('<li><a href="([^"]*)">([^<]*)<', "g");
+
+			const matches = indexContent.matchAll(itemRegex);
+			let items = [];
+			for(const match of matches){
+				const tmpItem = {
+					label: match[2],
+					filename: match[1]
+				};
+				items.push(tmpItem);
+			}
 
 			const item = await vscode.window.showQuickPick(items);
 			if (item === undefined) {
@@ -50,7 +58,7 @@ export function activate(context: vscode.ExtensionContext) {
 				}
 			);
 
-			const htmlPath = vscode.Uri.file(path.join(context.extensionPath, 'media', item));
+			const htmlPath = vscode.Uri.file(path.join(context.extensionPath, 'media', item.filename));
 
 			const cssPath = vscode.Uri.joinPath(context.extensionUri, 'media', 'site.css');
 			const clipboardPath = vscode.Uri.joinPath(context.extensionUri, 'media', 'clipboard.png');
