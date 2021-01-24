@@ -1,0 +1,19 @@
+
+
+/* style overrides to handle rendering in VS Code */
+
+body {
+    background-color: var(--vscode-editor-background);
+    color: var(--vscode-editor-foreground);
+    font-family: var(--vscode-editor-font-family)
+}
+td.code.empty {
+    background: var(--vscode-editor-background);
+}
+a, a:visited {
+    color: var(--vscode-editor-foreground);
+}
+td.code  .highlight {
+    color: #252519; /* restore original body color for code */
+    font-weight: bold;
+}

@@ -9,3 +9,5 @@ rm -rf media
 mkdir -p media
 cp tmp/gbe/public/* media/
 rm -rf tmp
+
+cat ./media-overrides/site.css >> ./media/site.css

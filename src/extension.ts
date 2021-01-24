@@ -46,25 +46,35 @@ export function activate(context: vscode.ExtensionContext) {
 				{
 					// Only allow the webview to access resources in our extension's media directory
 					// localResourceRoots: [vscode.Uri.file(path.join(context.extensionPath, 'media'))]
+					localResourceRoots: [vscode.Uri.joinPath(context.extensionUri, 'media')]
 				}
 			);
 
-			// Get path to resource on disk
 			const htmlPath = vscode.Uri.file(path.join(context.extensionPath, 'media', item));
 
 			const cssPath = vscode.Uri.joinPath(context.extensionUri, 'media', 'site.css');
 			const clipboardPath = vscode.Uri.joinPath(context.extensionUri, 'media', 'clipboard.png');
 			const playPath = vscode.Uri.joinPath(context.extensionUri, 'media', 'play.png');
+			const jsPath = vscode.Uri.joinPath(context.extensionUri, 'media', 'site.js');
+
 			const cssUri = panel.webview.asWebviewUri(cssPath);
 			const clipboardUri = panel.webview.asWebviewUri(clipboardPath);
 			const playUri = panel.webview.asWebviewUri(playPath);
+			const jsUri = panel.webview.asWebviewUri(jsPath);
 
-			let content = fs.readFileSync(htmlPath.fsPath, 'utf8');
-			content = content.replace('"site.css"', cssUri.toString());
-			content = content.replace('src="clipboard.png"', 'src="' + clipboardUri.toString() + '"');
-			content = content.replace('src="play.png"', 'src="' + playUri.toString() + '"');
-	panel.webview.html = content;
-})
+			const content = fs.readFileSync(htmlPath.fsPath, 'utf8')
+				// fix-up local content
+				.replace('"site.js`"', jsUri.toString())
+				.replace('href="site.css"', 'href="' + cssUri.toString() + '"')
+				.replace('src="site.js"', 'src="' + jsUri.toString() + '"')
+				.replace('src="clipboard.png"', 'src="' + clipboardUri.toString() + '"')
+				.replace('src="play.png"', 'src="' + playUri.toString() + '"')
+				// fix-up header link to go to https://gobyexample.com
+				.replace('href="./"', 'href="https://gobyexample.com"')
+				;
+
+			panel.webview.html = content;
+		})
 	);
 }
 
