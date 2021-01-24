@@ -4,7 +4,7 @@
 	"description": "Docs from gobyexample.com in VS Code and offline",
 	"publisher": "stuartleeks",
 	"repository": {"url": "https://github.com/stuartleeks/vscode-go-by-example"},
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"engines": {
 		"vscode": "^1.52.0"
 	},
@@ -31,7 +31,7 @@
 		"lint": "eslint src --ext ts",
 		"test": "node ./out/test/runTest.js",
 		"package": "vsce package",
-		"publish": "vsce publish --yarn -p $MARKETPLACE_PUBLISH_PAT",
+		"publish": "vsce publish --yarn -p $MARKETPLACE_PUBLISH_PAT --baseContentUrl https://github.com/stuartleeks/vscode-go-by-example/tree/main/  --baseImagesUrl https://github.com/stuartleeks/vscode-go-by-example/tree/main/",
 		"publish-patch": "vsce publish --yarn -p $MARKETPLACE_PUBLISH_PAT patch"
 	},
 	"devDependencies": {
