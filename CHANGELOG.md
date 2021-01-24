@@ -4,6 +4,10 @@ All notable changes to the "vscode-go-by-example" extension will be documented i
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## 1.0.3 - 24th January 2021
+
+ - Update README to fix docs links
+
 ## 1.0.2 - 24th January 2021
 
  - Update publish process to fix docs links

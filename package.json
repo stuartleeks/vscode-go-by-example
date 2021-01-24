@@ -4,7 +4,7 @@
 	"description": "Docs from gobyexample.com in VS Code and offline",
 	"publisher": "stuartleeks",
 	"repository": {"url": "https://github.com/stuartleeks/vscode-go-by-example"},
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"engines": {
 		"vscode": "^1.52.0"
 	},
