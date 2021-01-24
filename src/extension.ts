@@ -17,11 +17,10 @@ export function activate(context: vscode.ExtensionContext) {
 			const matches = indexContent.matchAll(itemRegex);
 			let items = [];
 			for(const match of matches){
-				const tmpItem = {
+				items.push({
 					label: match[2],
 					filename: match[1]
-				};
-				items.push(tmpItem);
+				});
 			}
 
 			const item = await vscode.window.showQuickPick(items);
@@ -32,7 +31,7 @@ export function activate(context: vscode.ExtensionContext) {
 			// Create and show panel
 			const panel = vscode.window.createWebviewPanel(
 				'gobyexample',
-				'Go By Example: ' + item,
+				'Go By Example: ' + item.label,
 				vscode.ViewColumn.One,
 				{
 					// Only allow the webview to access resources in our extension's media directory
@@ -59,6 +58,7 @@ export function activate(context: vscode.ExtensionContext) {
 				.replace('src="site.js"', 'src="' + jsUri.toString() + '"')
 				.replace('src="clipboard.png"', 'src="' + clipboardUri.toString() + '"')
 				.replace('src="play.png"', 'src="' + playUri.toString() + '"')
+				
 				// fix-up header link to go to https://gobyexample.com
 				.replace('href="./"', 'href="https://gobyexample.com"')
 				;
