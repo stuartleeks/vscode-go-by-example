@@ -12,14 +12,14 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:vscode-go-by-example.helloWorld"
+		"onCommand:vscode-go-by-example.openExample"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "vscode-go-by-example.helloWorld",
-				"title": "GoByExample: Hello World"
+				"command": "vscode-go-by-example.openExample",
+				"title": "GoByExample: Open example..."
 			}
 		]
 	},
