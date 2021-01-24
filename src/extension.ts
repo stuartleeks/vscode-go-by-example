@@ -31,9 +31,12 @@ export function activate(context: vscode.ExtensionContext) {
 				path.join(context.extensionPath, 'media')
 			);
 			const paths = fs.readdirSync(mediaDir.fsPath);
-			const items = paths.map(p=>path.parse(p).name);
+			const items = paths.filter(p => p.indexOf('.') < 0);
 
 			const item = await vscode.window.showQuickPick(items);
+			if (item === undefined) {
+				return;
+			}
 
 			// Create and show panel
 			const panel = vscode.window.createWebviewPanel(
@@ -42,21 +45,26 @@ export function activate(context: vscode.ExtensionContext) {
 				vscode.ViewColumn.One,
 				{
 					// Only allow the webview to access resources in our extension's media directory
-					localResourceRoots: [vscode.Uri.file(path.join(context.extensionPath, 'media'))]
+					// localResourceRoots: [vscode.Uri.file(path.join(context.extensionPath, 'media'))]
 				}
 			);
 
 			// Get path to resource on disk
-			const onDiskPath = vscode.Uri.file(
-				path.join(context.extensionPath, 'media',  item + '.html')
-			);
+			const htmlPath = vscode.Uri.file(path.join(context.extensionPath, 'media', item));
 
-			// // And get the special URI to use with the webview
-			// const src = panel.webview.asWebviewUri(onDiskPath);
+			const cssPath = vscode.Uri.joinPath(context.extensionUri, 'media', 'site.css');
+			const clipboardPath = vscode.Uri.joinPath(context.extensionUri, 'media', 'clipboard.png');
+			const playPath = vscode.Uri.joinPath(context.extensionUri, 'media', 'play.png');
+			const cssUri = panel.webview.asWebviewUri(cssPath);
+			const clipboardUri = panel.webview.asWebviewUri(clipboardPath);
+			const playUri = panel.webview.asWebviewUri(playPath);
 
-			// panel.webview.
-			panel.webview.html = fs.readFileSync(onDiskPath.fsPath, 'utf8');
-		})
+			let content = fs.readFileSync(htmlPath.fsPath, 'utf8');
+			content = content.replace('"site.css"', cssUri.toString());
+			content = content.replace('src="clipboard.png"', 'src="' + clipboardUri.toString() + '"');
+			content = content.replace('src="play.png"', 'src="' + playUri.toString() + '"');
+	panel.webview.html = content;
+})
 	);
 }
 
