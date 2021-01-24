@@ -1,0 +1,15 @@
+name: CI-publish
+
+on: workflow_dispatch
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      
+    - name: Run CI publish
+      run: sh ./ci-publish.sh 
+      env:
+        MARKETPLACE_PUBLISH_PAT: ${{ secrets.MARKETPLACE_PUBLISH_PAT }}
