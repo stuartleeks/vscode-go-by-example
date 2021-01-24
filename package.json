@@ -29,7 +29,10 @@
 		"watch": "tsc -watch -p ./",
 		"pretest": "yarn run compile && yarn run lint",
 		"lint": "eslint src --ext ts",
-		"test": "node ./out/test/runTest.js"
+		"test": "node ./out/test/runTest.js",
+		"package": "vsce package",
+		"publish": "vsce publish --yarn -p $MARKETPLACE_PUBLISH_PAT",
+		"publish-patch": "vsce publish --yarn -p $MARKETPLACE_PUBLISH_PAT patch"
 	},
 	"devDependencies": {
 		"@types/glob": "^7.1.3",
