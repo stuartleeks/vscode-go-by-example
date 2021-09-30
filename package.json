@@ -21,7 +21,7 @@
 		"commands": [
 			{
 				"command": "vscode-go-by-example.openExample",
-				"title": "GoByExample: Open example..."
+				"title": "Go By Example: Open example..."
 			}
 		]
 	},
