@@ -1,8 +1,6 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import * as path from 'path';
-import * as fs from 'fs';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -11,12 +9,16 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(
 		vscode.commands.registerCommand('vscode-go-by-example.openExample', async () => {
 
-			const indexContent = fs.readFileSync(vscode.Uri.file(path.join(context.extensionPath, 'media', 'index.html')).fsPath, 'utf8');
+			const utf8Decorder = new TextDecoder("utf-8");
+			const indexBytes = await vscode.workspace.fs.readFile(
+				vscode.Uri.joinPath(context.extensionUri, 'media', 'index.html')
+			);
+			const indexContent = utf8Decorder.decode(indexBytes);
 			const itemRegex = new RegExp('<li><a href="([^"]*)">([^<]*)<', "g");
 
 			const matches = indexContent.matchAll(itemRegex);
 			let items = [];
-			for(const match of matches){
+			for (const match of matches) {
 				items.push({
 					label: match[2],
 					filename: match[1]
@@ -39,7 +41,8 @@ export function activate(context: vscode.ExtensionContext) {
 				}
 			);
 
-			const htmlPath = vscode.Uri.file(path.join(context.extensionPath, 'media', item.filename));
+			const htmlPath = vscode.Uri.joinPath(context.extensionUri, 'media', item.filename);
+
 
 			const cssPath = vscode.Uri.joinPath(context.extensionUri, 'media', 'site.css');
 			const clipboardPath = vscode.Uri.joinPath(context.extensionUri, 'media', 'clipboard.png');
@@ -51,14 +54,15 @@ export function activate(context: vscode.ExtensionContext) {
 			const playUri = panel.webview.asWebviewUri(playPath);
 			const jsUri = panel.webview.asWebviewUri(jsPath);
 
-			const content = fs.readFileSync(htmlPath.fsPath, 'utf8')
+			const bytes = await vscode.workspace.fs.readFile(htmlPath);
+			const content = utf8Decorder.decode(bytes)
 				// fix-up local content
 				.replace('"site.js`"', jsUri.toString())
 				.replace('href="site.css"', 'href="' + cssUri.toString() + '"')
 				.replace('src="site.js"', 'src="' + jsUri.toString() + '"')
 				.replace('src="clipboard.png"', 'src="' + clipboardUri.toString() + '"')
 				.replace('src="play.png"', 'src="' + playUri.toString() + '"')
-				
+
 				// fix-up header link to go to https://gobyexample.com
 				.replace('href="./"', 'href="https://gobyexample.com"')
 				;
