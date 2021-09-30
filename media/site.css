@@ -183,7 +183,7 @@ body .no { color: #880000 }                     /* Name.Constant */
 body .nd { color: #AA22FF }                     /* Name.Decorator */
 body .ni { color: #999999; font-weight: bold }  /* Name.Entity */
 body .ne { color: #D2413A; font-weight: bold }  /* Name.Exception */
-body .nf { color: #0000FF }                     /* Name.Function */
+body .nf {  }                     /* Name.Function */
 body .nl { color: #A0A000 }                     /* Name.Label */
 body .nn { color: #0000FF; font-weight: bold }  /* Name.Namespace */
 body .nt { color: #954121; font-weight: bold }  /* Name.Tag */
@@ -211,7 +211,6 @@ body .vg { color: #19469D }                     /* Name.Variable.Global */
 body .vi { color: #19469D }                     /* Name.Variable.Instance */
 body .il { color: #666666 }                     /* Literal.Number.Integer.Long */
 
-
 /* style overrides to handle rendering in VS Code */
 
 body {
@@ -219,13 +218,19 @@ body {
     color: var(--vscode-editor-foreground);
     font-family: var(--vscode-editor-font-family)
 }
+
 td.code.empty {
     background: var(--vscode-editor-background);
 }
-a, a:visited {
+
+a,
+a:visited {
     color: var(--vscode-editor-foreground);
 }
-td.code  .highlight {
-    color: #252519; /* restore original body color for code */
+
+td.code .highlight,
+td.code pre {
+    color: #252519;
+    /* restore original body color for code */
     font-weight: bold;
 }
