@@ -4,6 +4,10 @@ All notable changes to the "vscode-go-by-example" extension will be documented i
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## 1.1.2 5th April 2022
+
+ - Update with latest content from https://gobyexample.com (includes generics)
+
 ## 1.0.2 - 1.0.4 - 24th January 2021
 
  - Update README/publishing to fix docs links
