@@ -42,9 +42,8 @@
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/ulCzODwCde_0"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
-</pre>
+            <a href="https://go.dev/play/p/5jpkxJ2T0Lv"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -54,8 +53,10 @@
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;maps&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -65,8 +66,7 @@
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -78,9 +78,7 @@
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">m</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">m</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -92,10 +90,8 @@ syntax.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">m</span><span class="p">[</span><span class="s">&#34;k1&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="mi">7</span>
-    <span class="nx">m</span><span class="p">[</span><span class="s">&#34;k2&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="mi">13</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">m</span><span class="p">[</span><span class="s">&#34;k1&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="mi">7</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">m</span><span class="p">[</span><span class="s">&#34;k2&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="mi">13</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -107,9 +103,7 @@ its key/value pairs.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;map:&#34;</span><span class="p">,</span> <span class="nx">m</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;map:&#34;</span><span class="p">,</span> <span class="nx">m</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -120,10 +114,22 @@ its key/value pairs.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">v1</span> <span class="o">:=</span> <span class="nx">m</span><span class="p">[</span><span class="s">&#34;k1&#34;</span><span class="p">]</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;v1: &#34;</span><span class="p">,</span> <span class="nx">v1</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">v1</span> <span class="o">:=</span> <span class="nx">m</span><span class="p">[</span><span class="s">&#34;k1&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;v1:&#34;</span><span class="p">,</span> <span class="nx">v1</span><span class="p">)</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>If the key doesn&rsquo;t exist, the
+<a href="https://go.dev/ref/spec#The_zero_value">zero value</a> of the
+value type is returned.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">v3</span> <span class="o">:=</span> <span class="nx">m</span><span class="p">[</span><span class="s">&#34;k3&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;v3:&#34;</span><span class="p">,</span> <span class="nx">v3</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -135,9 +141,7 @@ pairs when called on a map.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;len:&#34;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">m</span><span class="p">))</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;len:&#34;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">m</span><span class="p">))</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -149,10 +153,21 @@ a map.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nb">delete</span><span class="p">(</span><span class="nx">m</span><span class="p">,</span> <span class="s">&#34;k2&#34;</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;map:&#34;</span><span class="p">,</span> <span class="nx">m</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nb">delete</span><span class="p">(</span><span class="nx">m</span><span class="p">,</span> <span class="s">&#34;k2&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;map:&#34;</span><span class="p">,</span> <span class="nx">m</span><span class="p">)</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>To remove <em>all</em> key/value pairs from a map, use
+the <code>clear</code> builtin.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nb">clear</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;map:&#34;</span><span class="p">,</span> <span class="nx">m</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -169,10 +184,8 @@ itself, so we ignored it with the <em>blank identifier</em>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">_</span><span class="p">,</span> <span class="nx">prs</span> <span class="o">:=</span> <span class="nx">m</span><span class="p">[</span><span class="s">&#34;k2&#34;</span><span class="p">]</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;prs:&#34;</span><span class="p">,</span> <span class="nx">prs</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">_</span><span class="p">,</span> <span class="nx">prs</span> <span class="o">:=</span> <span class="nx">m</span><span class="p">[</span><span class="s">&#34;k2&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;prs:&#34;</span><span class="p">,</span> <span class="nx">prs</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -182,13 +195,26 @@ itself, so we ignored it with the <em>blank identifier</em>
 the same line with this syntax.</p>
 
           </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">n</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="s">&#34;foo&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#34;bar&#34;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;map:&#34;</span><span class="p">,</span> <span class="nx">n</span><span class="p">)</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>The <code>maps</code> package contains a number of useful
+utility functions for maps.</p>
+
+          </td>
           <td class="code">
             
-          <pre class="chroma">
-    <span class="nx">n</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="s">&#34;foo&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#34;bar&#34;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;map:&#34;</span><span class="p">,</span> <span class="nx">n</span><span class="p">)</span>
-<span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">n2</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="s">&#34;foo&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#34;bar&#34;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">maps</span><span class="p">.</span><span class="nf">Equal</span><span class="p">(</span><span class="nx">n</span><span class="p">,</span> <span class="nx">n2</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;n == n2&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -204,14 +230,16 @@ printed with <code>fmt.Println</code>.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma">
-<span class="gp">$</span> go run maps.go 
-<span class="go">map: map[k1:7 k2:13]
-</span><span class="go">v1:  7
-</span><span class="go">len: 2
-</span><span class="go">map: map[k1:7]
-</span><span class="go">prs: false
-</span><span class="go">map: map[bar:2 foo:1]</span></pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run maps.go 
+</span></span><span class="line"><span class="cl"><span class="go">map: map[k1:7 k2:13]
+</span></span></span><span class="line"><span class="cl"><span class="go">v1: 7
+</span></span></span><span class="line"><span class="cl"><span class="go">v3: 0
+</span></span></span><span class="line"><span class="cl"><span class="go">len: 2
+</span></span></span><span class="line"><span class="cl"><span class="go">map: map[k1:7]
+</span></span></span><span class="line"><span class="cl"><span class="go">map: map[]
+</span></span></span><span class="line"><span class="cl"><span class="go">prs: false
+</span></span></span><span class="line"><span class="cl"><span class="go">map: map[bar:2 foo:1]
+</span></span></span><span class="line"><span class="cl"><span class="go">n == n2</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -230,7 +258,7 @@ printed with <code>fmt.Println</code>.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    m :\u003D make(map[string]int)\u000A');codeLines.push('    m[\"k1\"] \u003D 7\u000A    m[\"k2\"] \u003D 13\u000A');codeLines.push('    fmt.Println(\"map:\", m)\u000A');codeLines.push('    v1 :\u003D m[\"k1\"]\u000A    fmt.Println(\"v1: \", v1)\u000A');codeLines.push('    fmt.Println(\"len:\", len(m))\u000A');codeLines.push('    delete(m, \"k2\")\u000A    fmt.Println(\"map:\", m)\u000A');codeLines.push('    _, prs :\u003D m[\"k2\"]\u000A    fmt.Println(\"prs:\", prs)\u000A');codeLines.push('    n :\u003D map[string]int{\"foo\": 1, \"bar\": 2}\u000A    fmt.Println(\"map:\", n)\u000A}\u000A');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"maps\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    m :\u003D make(map[string]int)\u000A');codeLines.push('    m[\"k1\"] \u003D 7\u000A    m[\"k2\"] \u003D 13\u000A');codeLines.push('    fmt.Println(\"map:\", m)\u000A');codeLines.push('    v1 :\u003D m[\"k1\"]\u000A    fmt.Println(\"v1:\", v1)\u000A');codeLines.push('    v3 :\u003D m[\"k3\"]\u000A    fmt.Println(\"v3:\", v3)\u000A');codeLines.push('    fmt.Println(\"len:\", len(m))\u000A');codeLines.push('    delete(m, \"k2\")\u000A    fmt.Println(\"map:\", m)\u000A');codeLines.push('    clear(m)\u000A    fmt.Println(\"map:\", m)\u000A');codeLines.push('    _, prs :\u003D m[\"k2\"]\u000A    fmt.Println(\"prs:\", prs)\u000A');codeLines.push('    n :\u003D map[string]int{\"foo\": 1, \"bar\": 2}\u000A    fmt.Println(\"map:\", n)\u000A');codeLines.push('    n2 :\u003D map[string]int{\"foo\": 1, \"bar\": 2}\u000A    if maps.Equal(n, n2) {\u000A        fmt.Println(\"n \u003D\u003D n2\")\u000A    }\u000A}\u000A');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>
